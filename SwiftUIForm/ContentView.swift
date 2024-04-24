@@ -19,7 +19,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 //Ahora llamamos a los restaurantes a través del ViewModel
-                ForEach(viewModel.restaurants.sorted(by: viewModel.almacen.displayOrder.predicate())){ restaurant in
+                ForEach(viewModel.restaurantsDB.sorted(by: viewModel.almacen.displayOrder.predicate())){ restaurant in
                 
                 //ForEach(restaurants) { restaurant in
                 
@@ -30,6 +30,7 @@ struct ContentView: View {
                             Button(action: {
                                 // mark the selected restaurant as check-in
                                 viewModel.toggleCheckIn(restaurant: restaurant)
+                                viewModel.fetchRestaurants()
                             }) {
                                 HStack {
                                     Text("Check-in")
@@ -39,7 +40,8 @@ struct ContentView: View {
                             
                             Button(action: {
                                 // delete the selected restaurant
-                                viewModel.delete(restaurant: restaurant)
+                                viewModel.deleteRestaurant(restaurant: restaurant)
+                                viewModel.fetchRestaurants()
                             }) {
                                 HStack {
                                     Text("Delete")
@@ -50,6 +52,7 @@ struct ContentView: View {
                             Button(action: {
                                 // mark the selected restaurant as favorite
                                 viewModel.toggleFavorite(restaurant: restaurant)
+                                viewModel.fetchRestaurants()
                                 
                             }) {
                                 HStack {
@@ -82,7 +85,10 @@ struct ContentView: View {
                 SettingView().environmentObject(viewModel.almacen)
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear {
+            viewModel.fetchRestaurants()
+        }
+        .navigationViewStyle(StackNavigationViewStyle()) //para mirar en las tablets
     }
     
 }

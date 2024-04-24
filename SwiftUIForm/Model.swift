@@ -9,9 +9,10 @@ import Foundation
 import SwiftUI
 import FirebaseFirestoreSwift
 
-struct Restaurant: Identifiable {
-    @DocumentID var id2: String?
-    var id = UUID()
+
+struct Restaurant: Codable, Identifiable {
+    @DocumentID var id: String?
+    var id2 = UUID()
     var name: String
     var type: String
     var phone: String

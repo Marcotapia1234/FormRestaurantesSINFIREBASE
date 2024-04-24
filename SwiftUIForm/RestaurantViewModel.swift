@@ -2,10 +2,11 @@
 //  RestaurantViewModel.swift
 //  SwiftUIForm
 //
-//  Created by Jose on 16/4/24.
+
 //
 
 import SwiftUI
+import Foundation
 import FirebaseFirestore
 
 class RestaurantViewModel: ObservableObject {
@@ -13,22 +14,17 @@ class RestaurantViewModel: ObservableObject {
     @Published var restaurants: [Restaurant] = []
     @Published var selectedRestaurant: Restaurant?
     @Published var showSettings: Bool = false
+    @Published var restaurantsDB: [Restaurant] = []
 
     @ObservedObject var almacen: SettingStore
     
-    private var dataBaseReference = Firestore.firestore().collection("Restaurantes")
+    var databaseReference = Firestore.firestore().collection("restaurantes")
     
-    //Función para agregar datos a la base de datos
-    
-    //Función para leer datos
-    
-    //Función para actualizar datos
-    
-    //Función para borrar datos
-
+   
     init(almacen: SettingStore) {
         
         self.almacen = almacen
+        checkIfDatabaseIsEmpty()
         
         // Initializamos los restaurantes
         self.restaurants = [
@@ -55,23 +51,84 @@ class RestaurantViewModel: ObservableObject {
             Restaurant(name: "CASK Pub and Kitchen", type: "Thai", phone: "432-344050", image: "caskpubkitchen", priceLevel: 1)
             ]
     }
-
-    func delete(restaurant: Restaurant) {
-        if let index = self.restaurants.firstIndex(where: { $0.id == restaurant.id }) {
-            self.restaurants.remove(at: index)
+    
+    func checkIfDatabaseIsEmpty(){
+        databaseReference.getDocuments { QuerySnapshot, error in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                return
+            }
+            guard let documents = QuerySnapshot?.documents else {
+                print("No documents found")
+                return
+            }
+            if documents.isEmpty {
+                self.addInitialRestaurants()
+            }else {
+                print("La colección no está vacía, no se agregarán elementos")
+            }
         }
+    }
+    func addInitialRestaurants() {
+        for restaurant in restaurants {
+            self.addRestaurant(restaurant: restaurant)
+            }
+        }
+        
+    func fetchRestaurants() {
+        databaseReference.getDocuments { querySnapshot, error in
+            if let error = error { print(error)
+                return
+            }
+            guard let documents = querySnapshot?.documents else {
+                return
+            }
+            if documents.isEmpty {
+                
+            } else {
+                self.restaurantsDB = documents.compactMap {document in
+                    do {
+                        let restaurant = try document.data(as: Restaurant.self)
+                        return restaurant
+                    }catch {
+                        return nil
+                    }
+                    }
+                }
+        }
+    }
+    func addRestaurant(restaurant: Restaurant){
+        do{
+        _ = try databaseReference.addDocument(from: restaurant)
+        } catch {
+            print("Erro adding restaurant: \(error.localizedDescription)")
+        }
+    }
+
+    func deleteRestaurant(restaurant: Restaurant) {
+        if let restaurantID = restaurant.id {
+            databaseReference.document(restaurantID).delete { error in if let error = error {
+                    print("Error removing document: \(error)")
+                }
+            }
+        }
+        
     }
 
     func toggleFavorite(restaurant: Restaurant) {
-        if let index = self.restaurants.firstIndex(where: { $0.id == restaurant.id }) {
-            self.restaurants[index].isFavorite.toggle()
+        if let restaurantID = restaurant.id {
+            databaseReference.document(restaurantID).updateData(
+                ["isFavorite": !restaurant.isFavorite])
         }
+        
+        
     }
 
     func toggleCheckIn(restaurant: Restaurant) {
-        if let index = self.restaurants.firstIndex(where: { $0.id == restaurant.id }) {
-            self.restaurants[index].isCheckIn.toggle()
+        if let restaurantID = restaurant.id {
+            databaseReference.document(restaurantID).updateData(["isCheckIn": !restaurant.isCheckIn])
         }
+        
     }
 
     func shouldShowItem(restaurant: Restaurant) -> Bool {

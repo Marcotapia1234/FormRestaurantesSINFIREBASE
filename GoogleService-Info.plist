@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyA259evWRO5-zdxK6Bi-JQKnHMo__N4kno</string>
+	<string>AIzaSyBE9fAxufi_OkvT3VHZFF8HtvTzVvXSb_8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>450837887458</string>
+	<string>989757542691</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.appcoda.SwiftUIForm</string>
 	<key>PROJECT_ID</key>
-	<string>formulariocomida-6aa85</string>
+	<string>restaurant2-65c19</string>
 	<key>STORAGE_BUCKET</key>
-	<string>formulariocomida-6aa85.appspot.com</string>
+	<string>restaurant2-65c19.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:450837887458:ios:e74b74b995c19a157be1bb</string>
+	<string>1:989757542691:ios:7e07660ea145e5b3db7c96</string>
 </dict>
 </plist>
