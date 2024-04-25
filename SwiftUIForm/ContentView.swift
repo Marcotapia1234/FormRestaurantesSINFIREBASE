@@ -14,6 +14,7 @@ struct ContentView: View {
     //@EnvironmentObject var almacen: SettingStore
     
     @StateObject var viewModel: RestaurantViewModel
+    @StateObject private var authModel = AuthViewModel()
     
     var body: some View {
         NavigationView {
@@ -73,13 +74,21 @@ struct ContentView: View {
             
             .navigationBarTitle("Restaurant")
             .navigationBarItems(trailing:
-
+                HStack{
                 Button(action: {
-                    viewModel.showSettings = true
-                }, label: {
-                    Image(systemName: "gear").font(.title)
+                    viewModel.showSettings.toggle()
+                }) {
+                    Image(systemName: "arrow.clockwise.circle")
+                        .font(.title)
                         .foregroundColor(.black)
-                })
+                }
+                       Button(action: {
+                   authModel.signOut()
+                }) {
+                     Image(systemName: "gearshape")
+                       }
+                   }
+                       
             )
             .sheet(isPresented: $viewModel.showSettings) {
                 SettingView().environmentObject(viewModel.almacen)

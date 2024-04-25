@@ -26,7 +26,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct SwiftUIFormApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    var db = FirebaseApp.configure()
+    var db:Void = FirebaseApp.configure()
     
     var almacenInicial = SettingStore()
     
@@ -38,7 +38,8 @@ struct SwiftUIFormApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: viewModel).environmentObject(almacenInicial)
+            HolderView().environmentObject(AuthViewModel())
+            //ContentView(viewModel: viewModel).environmentObject(almacenInicial)
         }
     }
 }

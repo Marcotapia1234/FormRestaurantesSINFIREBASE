@@ -14,6 +14,10 @@
 		A961C3C92BD7FB9B0007A782 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A961C3C82BD7FB9B0007A782 /* FirebaseAuth */; };
 		A961C3CB2BD7FB9B0007A782 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A961C3CA2BD7FB9B0007A782 /* FirebaseFirestore */; };
 		A961C3CD2BD7FB9B0007A782 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A961C3CC2BD7FB9B0007A782 /* FirebaseFirestoreSwift */; };
+		A9853A742BDAB1400012AB68 /* SingUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9853A732BDAB1400012AB68 /* SingUpView.swift */; };
+		A9853A762BDAB2B10012AB68 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9853A752BDAB2B10012AB68 /* AuthViewModel.swift */; };
+		A9853A782BDAB2D20012AB68 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9853A772BDAB2D20012AB68 /* HolderView.swift */; };
+		A9853A7A2BDAB82D0012AB68 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9853A792BDAB82D0012AB68 /* ForgotPassword.swift */; };
 		F4741DD124ED67BE00F16863 /* SwiftUIFormApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4741DD024ED67BE00F16863 /* SwiftUIFormApp.swift */; };
 		F4741DD324ED67BE00F16863 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4741DD224ED67BE00F16863 /* ContentView.swift */; };
 		F4741DD524ED67C100F16863 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4741DD424ED67C100F16863 /* Assets.xcassets */; };
@@ -26,6 +30,10 @@
 		8201B01D2BCEF97300DBF57E /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		8201B01F2BCEFBC800DBF57E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A961C3C52BD7F86B0007A782 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A9853A732BDAB1400012AB68 /* SingUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpView.swift; sourceTree = "<group>"; };
+		A9853A752BDAB2B10012AB68 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		A9853A772BDAB2D20012AB68 /* HolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
+		A9853A792BDAB82D0012AB68 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		F4741DCD24ED67BE00F16863 /* SwiftUIForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4741DD024ED67BE00F16863 /* SwiftUIFormApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIFormApp.swift; sourceTree = "<group>"; };
 		F4741DD224ED67BE00F16863 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +86,10 @@
 				8201B01B2BCD7FEA00DBF57E /* SettingStore.swift */,
 				8201B01D2BCEF97300DBF57E /* RestaurantViewModel.swift */,
 				8201B01F2BCEFBC800DBF57E /* Model.swift */,
+				A9853A732BDAB1400012AB68 /* SingUpView.swift */,
+				A9853A752BDAB2B10012AB68 /* AuthViewModel.swift */,
+				A9853A772BDAB2D20012AB68 /* HolderView.swift */,
+				A9853A792BDAB82D0012AB68 /* ForgotPassword.swift */,
 			);
 			path = SwiftUIForm;
 			sourceTree = "<group>";
@@ -169,11 +181,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8201B01C2BCD7FEA00DBF57E /* SettingStore.swift in Sources */,
+				A9853A742BDAB1400012AB68 /* SingUpView.swift in Sources */,
 				F4741DE024ED706600F16863 /* SettingView.swift in Sources */,
+				A9853A782BDAB2D20012AB68 /* HolderView.swift in Sources */,
 				8201B01E2BCEF97300DBF57E /* RestaurantViewModel.swift in Sources */,
+				A9853A762BDAB2B10012AB68 /* AuthViewModel.swift in Sources */,
 				8201B0202BCEFBC800DBF57E /* Model.swift in Sources */,
 				F4741DD324ED67BE00F16863 /* ContentView.swift in Sources */,
 				F4741DD124ED67BE00F16863 /* SwiftUIFormApp.swift in Sources */,
+				A9853A7A2BDAB82D0012AB68 /* ForgotPassword.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
