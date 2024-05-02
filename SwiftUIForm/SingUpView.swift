@@ -47,7 +47,7 @@ struct SingUpView: View {
                         HStack{
                             Image("logo")
                                 .scaleEffect(0.5)
-                            Text("Google").bold()
+                            Text("Utiza Google").bold()
                     }
             }
                 

@@ -109,4 +109,23 @@ final class AuthViewModel: ObservableObject {
         }
 
     }
-}
+    struct ForgotPasswordView_Previews: PreviewProvider {
+
+        static var previews: some View {
+
+            ForgotPasswordView()
+
+        }
+
+    }
+
+
+    // function to reset password
+
+        func resetPassword(emailAddress: String) {
+
+                Auth.auth().sendPasswordReset(withEmail: emailAddress)
+
+            }
+    
+ }
