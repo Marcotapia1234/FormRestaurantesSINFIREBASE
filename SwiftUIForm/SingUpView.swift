@@ -12,6 +12,7 @@ struct SingUpView: View {
     @State private var emailAddress: String = ""
     @State private var password: String = ""
     @State private var showingSheet:Bool = false
+   
     
     var body: some View {
         NavigationView {
@@ -39,6 +40,17 @@ struct SingUpView: View {
                         Text("Sign In")
                     }
             }
+                
+                    Button(action: {
+                        authModel.signInWithGoogle()
+                    }) {
+                        HStack{
+                            Image("logo")
+                                .scaleEffect(0.5)
+                            Text("Google").bold()
+                    }
+            }
+                
         }   .navigationTitle("Welcome")
                 .toolbar {
                     ToolbarItemGroup(placement:
